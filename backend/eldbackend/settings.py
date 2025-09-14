@@ -35,6 +35,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'eldbackend.urls'
@@ -84,11 +85,20 @@ REST_FRAMEWORK = {
     ]
 }
 
+
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://*.vercel.app",
+    "https://*.railway.app",
 ]
+
+# Add your frontend domain once deployed
+CORS_ALLOW_ALL_ORIGINS = DEBUG
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Google Maps API Key
 GOOGLE_MAPS_API_KEY = config('GOOGLE_MAPS_API_KEY', default='')

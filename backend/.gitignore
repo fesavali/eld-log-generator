@@ -1,2 +1,25 @@
 api/__pycache__/*
+eldbackend/__pycache__/*
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media
+
+# Environment variables
 .env
+.env.local
+
+# Static files
+/staticfiles/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

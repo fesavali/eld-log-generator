@@ -87,20 +87,15 @@ REST_FRAMEWORK = {
 
 
 # CORS settings
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https:\/\/eld-log-generator-\w+\.vercel\.app$",
-    r"^https:\/\/eld-log-generator-\w+-felix-savalis-projects\.vercel\.app$",
-]
-
-# include specific domains
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://eld-log-generator-production.up.railway.app",
+    "https://eld-log-generator-five.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://eld-log-generator-production.up.railway.app",
-    "https://*.vercel.app",
+    "https://eld-log-generator-five.vercel.app"
 ]
 
 CORS_ALLOW_CREDENTIALS = True

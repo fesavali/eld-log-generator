@@ -90,15 +90,13 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://eld-log-generator-production.up.railway.app",
-    "https://eld-log-generator-kl507u66f-felix-savalis-projects.vercel.app",
+    "https://eld-log-generator-pa1h91y8q-felix-savalis-projects.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://eld-log-generator-production.up.railway.app",
-    "https://eld-log-generator-kl507u66f-felix-savalis-projects.vercel.app",
+    "https://eld-log-generator-pa1h91y8q-felix-savalis-projects.vercel.app",
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

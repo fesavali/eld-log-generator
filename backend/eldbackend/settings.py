@@ -89,8 +89,8 @@ REST_FRAMEWORK = {
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://eld-log-generator-production.up.railway.app",
     "https://*.vercel.app",
-    "https://*.railway.app",
 ]
 
 # Add your frontend domain once deployed

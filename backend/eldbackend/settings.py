@@ -93,8 +93,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://eld-log-generator-kl507u66f-felix-savalis-projects.vercel.app",
 ]
 
-# Add your frontend domain once deployed
-CORS_ALLOW_ALL_ORIGINS = DEBUG
+CSRF_TRUSTED_ORIGINS = [
+    "https://eld-log-generator-production.up.railway.app",
+    "https://eld-log-generator-kl507u66f-felix-savalis-projects.vercel.app",
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

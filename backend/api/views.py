@@ -16,6 +16,7 @@ class TripViewSet(viewsets.ModelViewSet):
     
     @action(detail=False, methods=['post'])
     def calculate_route(self, request):
+        
         # Extract trip data from request
         current_location = request.data.get('current_location')
         pickup_location = request.data.get('pickup_location')

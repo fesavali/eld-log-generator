@@ -98,6 +98,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://eld-log-generator-kl507u66f-felix-savalis-projects.vercel.app",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

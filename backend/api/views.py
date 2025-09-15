@@ -63,13 +63,24 @@ class TripViewSet(viewsets.ModelViewSet):
                     status=status.HTTP_400_BAD_REQUEST
                 )
             
-            # Extract route information
-            leg = directions_result[0]['legs'][0]
-            distance_meters = leg['distance']['value']
-            duration_seconds = leg['duration']['value']
-            
+            # ✅ Extract route information across all legs
+            legs = directions_result[0]['legs']
+            distance_meters = sum(leg['distance']['value'] for leg in legs)
+            duration_seconds = sum(leg['duration']['value'] for leg in legs)
+
             distance_miles = distance_meters / 1609.34
             duration_hours = duration_seconds / 3600
+
+            # Optional: collect per-leg info
+            legs_info = [
+                {
+                    'start': leg['start_address'],
+                    'end': leg['end_address'],
+                    'distance_miles': leg['distance']['value'] / 1609.34,
+                    'duration_hours': leg['duration']['value'] / 3600
+                }
+                for leg in legs
+            ]
             
             # Calculate HOS compliance
             hos_calculator = HOSCalculator(current_cycle_used)
@@ -93,8 +104,9 @@ class TripViewSet(viewsets.ModelViewSet):
             response_data = {
                 'trip': TripSerializer(trip).data,
                 'route_info': {
-                    'distance': distance_miles,
-                    'duration': duration_hours,
+                    'total_distance': distance_miles,
+                    'total_duration': duration_hours,
+                    'legs': legs_info,  # 🔹 includes details of each segment
                     'breaks': trip_plan['breaks'],
                     'fuel_stops': trip_plan['fuel_stops'],
                     'overnight_rests': trip_plan.get('overnight_rests', 0),
